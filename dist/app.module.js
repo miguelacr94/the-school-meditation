@@ -15,6 +15,7 @@ const app_service_1 = require("./app.service");
 const env_schema_1 = require("./config/env.schema");
 const guide_meditation_module_1 = require("./guide-meditation/guide-meditation.module");
 const music_module_1 = require("./music/music.module");
+const video_module_1 = require("./video/video.module");
 let AppModule = class AppModule {
 };
 exports.AppModule = AppModule;
@@ -30,6 +31,7 @@ exports.AppModule = AppModule = __decorate([
             }),
             guide_meditation_module_1.GuidedMeditationModule,
             music_module_1.MusicModule,
+            video_module_1.VideoModule,
         ],
         controllers: [app_controller_1.AppController],
         providers: [app_service_1.AppService],

@@ -6,6 +6,7 @@ import { AppService } from "./app.service";
 import { envSchema } from "./config/env.schema";
 import { GuidedMeditationModule } from "./guide-meditation/guide-meditation.module";
 import { MusicModule } from "./music/music.module";
+import { VideoModule } from "./video/video.module";
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { MusicModule } from "./music/music.module";
     }),
     GuidedMeditationModule,
     MusicModule,
+    VideoModule,
   ],
   controllers: [AppController],
   providers: [AppService],
