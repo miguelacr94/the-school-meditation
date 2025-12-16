@@ -27,7 +27,7 @@ let MusicController = class MusicController {
         return this.musicService.create(dto);
     }
     findAll(query) {
-        return this.musicService.findAll(query.id, query.categories, query.isPremium ? query.isPremium === "true" : undefined, query.active ? query.active === "true" : undefined);
+        return this.musicService.findAll(query.id, query.categories, query.isPremium ? query.isPremium === "true" : undefined, query.active ? query.active === "true" : undefined, query.page, query.limit);
     }
     findOne(id) {
         return this.musicService.findOne(id);

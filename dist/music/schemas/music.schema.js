@@ -18,12 +18,14 @@ let Music = class Music {
     description;
     duration;
     categories;
-    audioUrl;
-    imageUrl;
+    audioFilename;
+    imageFilename;
     plays;
     isPremium;
     order;
     active;
+    createdAt;
+    updatedAt;
 };
 exports.Music = Music;
 __decorate([
@@ -53,11 +55,11 @@ __decorate([
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], Music.prototype, "audioUrl", void 0);
+], Music.prototype, "audioFilename", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ required: true }),
     __metadata("design:type", String)
-], Music.prototype, "imageUrl", void 0);
+], Music.prototype, "imageFilename", void 0);
 __decorate([
     (0, mongoose_1.Prop)({ default: 0 }),
     __metadata("design:type", Number)
@@ -74,6 +76,14 @@ __decorate([
     (0, mongoose_1.Prop)({ default: true, index: true }),
     __metadata("design:type", Boolean)
 ], Music.prototype, "active", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], Music.prototype, "createdAt", void 0);
+__decorate([
+    (0, mongoose_1.Prop)(),
+    __metadata("design:type", Date)
+], Music.prototype, "updatedAt", void 0);
 exports.Music = Music = __decorate([
     (0, mongoose_1.Schema)({ timestamps: true })
 ], Music);

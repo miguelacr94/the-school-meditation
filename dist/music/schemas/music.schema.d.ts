@@ -6,12 +6,14 @@ export declare class Music {
     description: string;
     duration: number;
     categories: Types.ObjectId[];
-    audioUrl: string;
-    imageUrl: string;
+    audioFilename: string;
+    imageFilename: string;
     plays: number;
     isPremium: boolean;
     order: number;
     active: boolean;
+    createdAt: Date;
+    updatedAt: Date;
 }
 export declare const MusicSchema: import("mongoose").Schema<Music, import("mongoose").Model<Music, any, any, any, Document<unknown, any, Music, any, import("mongoose").DefaultSchemaOptions> & Music & {
     _id: Types.ObjectId;
@@ -71,7 +73,7 @@ export declare const MusicSchema: import("mongoose").Schema<Music, import("mongo
     }, "id"> & {
         id: string;
     }> | undefined;
-    audioUrl?: import("mongoose").SchemaDefinitionProperty<string, Music, Document<unknown, {}, Music, {
+    audioFilename?: import("mongoose").SchemaDefinitionProperty<string, Music, Document<unknown, {}, Music, {
         id: string;
     }, import("mongoose").ResolveSchemaOptions<import("mongoose").DefaultSchemaOptions>> & Omit<Music & {
         _id: Types.ObjectId;
@@ -80,7 +82,7 @@ export declare const MusicSchema: import("mongoose").Schema<Music, import("mongo
     }, "id"> & {
         id: string;
     }> | undefined;
-    imageUrl?: import("mongoose").SchemaDefinitionProperty<string, Music, Document<unknown, {}, Music, {
+    imageFilename?: import("mongoose").SchemaDefinitionProperty<string, Music, Document<unknown, {}, Music, {
         id: string;
     }, import("mongoose").ResolveSchemaOptions<import("mongoose").DefaultSchemaOptions>> & Omit<Music & {
         _id: Types.ObjectId;
@@ -117,6 +119,24 @@ export declare const MusicSchema: import("mongoose").Schema<Music, import("mongo
         id: string;
     }> | undefined;
     active?: import("mongoose").SchemaDefinitionProperty<boolean, Music, Document<unknown, {}, Music, {
+        id: string;
+    }, import("mongoose").ResolveSchemaOptions<import("mongoose").DefaultSchemaOptions>> & Omit<Music & {
+        _id: Types.ObjectId;
+    } & {
+        __v: number;
+    }, "id"> & {
+        id: string;
+    }> | undefined;
+    createdAt?: import("mongoose").SchemaDefinitionProperty<Date, Music, Document<unknown, {}, Music, {
+        id: string;
+    }, import("mongoose").ResolveSchemaOptions<import("mongoose").DefaultSchemaOptions>> & Omit<Music & {
+        _id: Types.ObjectId;
+    } & {
+        __v: number;
+    }, "id"> & {
+        id: string;
+    }> | undefined;
+    updatedAt?: import("mongoose").SchemaDefinitionProperty<Date, Music, Document<unknown, {}, Music, {
         id: string;
     }, import("mongoose").ResolveSchemaOptions<import("mongoose").DefaultSchemaOptions>> & Omit<Music & {
         _id: Types.ObjectId;

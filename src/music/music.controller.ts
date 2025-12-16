@@ -13,6 +13,7 @@ import { CreateMusicDto } from "./dto/create-music.dto";
 import { UpdateMusicDto } from "./dto/update-music.dto";
 import { FindMusicQueryDto } from "./dto/find-music.dto";
 import { Music } from "./schemas/music.schema";
+import { GuidedMeditationPage } from "./interfaces/pagination.interface";
 
 @Controller("musics")
 export class MusicController {
@@ -24,12 +25,14 @@ export class MusicController {
   }
 
   @Get()
-  findAll(@Query() query: FindMusicQueryDto): Promise<Music[]> {
+  findAll(@Query() query: FindMusicQueryDto): Promise<GuidedMeditationPage> {
     return this.musicService.findAll(
       query.id,
       query.categories,
       query.isPremium ? query.isPremium === "true" : undefined,
       query.active ? query.active === "true" : undefined,
+      query.page,
+      query.limit,
     );
   }
 

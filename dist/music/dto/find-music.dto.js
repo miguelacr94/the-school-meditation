@@ -11,11 +11,21 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.FindMusicQueryDto = void 0;
 const class_validator_1 = require("class-validator");
+const class_transformer_1 = require("class-transformer");
 class FindMusicQueryDto {
     id;
     categories;
     isPremium;
     active;
+    name;
+    description;
+    plays;
+    order;
+    audioFilename;
+    imageFilename;
+    slug;
+    page;
+    limit;
 }
 exports.FindMusicQueryDto = FindMusicQueryDto;
 __decorate([
@@ -38,4 +48,57 @@ __decorate([
     (0, class_validator_1.IsBooleanString)(),
     __metadata("design:type", String)
 ], FindMusicQueryDto.prototype, "active", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], FindMusicQueryDto.prototype, "name", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], FindMusicQueryDto.prototype, "description", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_transformer_1.Transform)(({ value }) => value ? parseInt(String(value), 10) : undefined),
+    (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.Min)(0),
+    __metadata("design:type", Number)
+], FindMusicQueryDto.prototype, "plays", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_transformer_1.Transform)(({ value }) => value ? parseInt(String(value), 10) : undefined),
+    (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.Min)(0),
+    __metadata("design:type", Number)
+], FindMusicQueryDto.prototype, "order", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], FindMusicQueryDto.prototype, "audioFilename", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], FindMusicQueryDto.prototype, "imageFilename", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_validator_1.IsString)(),
+    __metadata("design:type", String)
+], FindMusicQueryDto.prototype, "slug", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_transformer_1.Transform)(({ value }) => value ? parseInt(String(value), 10) : undefined),
+    (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.Min)(1),
+    __metadata("design:type", Number)
+], FindMusicQueryDto.prototype, "page", void 0);
+__decorate([
+    (0, class_validator_1.IsOptional)(),
+    (0, class_transformer_1.Transform)(({ value }) => value ? parseInt(String(value), 10) : undefined),
+    (0, class_validator_1.IsInt)(),
+    (0, class_validator_1.Min)(1),
+    __metadata("design:type", Number)
+], FindMusicQueryDto.prototype, "limit", void 0);
 //# sourceMappingURL=find-music.dto.js.map

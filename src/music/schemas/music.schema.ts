@@ -25,10 +25,10 @@ export class Music {
   categories: Types.ObjectId[];
 
   @Prop({ required: true })
-  audioUrl: string;
+  audioFilename: string;
 
   @Prop({ required: true })
-  imageUrl: string;
+  imageFilename: string;
 
   @Prop({ default: 0 })
   plays: number;
@@ -41,6 +41,12 @@ export class Music {
 
   @Prop({ default: true, index: true })
   active: boolean;
+
+  @Prop()
+  createdAt: Date;
+
+  @Prop()
+  updatedAt: Date;
 }
 
 export const MusicSchema = SchemaFactory.createForClass(Music);

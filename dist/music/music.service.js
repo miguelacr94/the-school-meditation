@@ -26,7 +26,7 @@ let MusicService = class MusicService {
         const music = new this.musicModel(createMusicDto);
         return music.save();
     }
-    async findAll(id, categories, isPremium, active) {
+    async findAll(id, categories, isPremium, active, page, limit) {
         const query = {};
         if (id) {
             query._id = id;
@@ -40,7 +40,46 @@ let MusicService = class MusicService {
         if (active !== undefined) {
             query.active = active;
         }
-        return this.musicModel.find(query).sort({ order: 1, createdAt: -1 }).exec();
+        const currentPage = page && page > 0 ? page : 1;
+        const currentPageSize = limit && limit > 0 ? limit : 10;
+        const skip = (currentPage - 1) * currentPageSize;
+        const [data, total] = await Promise.all([
+            this.musicModel
+                .find(query)
+                .sort({ order: 1, createdAt: -1 })
+                .skip(skip)
+                .limit(currentPageSize)
+                .exec(),
+            this.musicModel.countDocuments(query).exec(),
+        ]);
+        const musicList = data.map((music) => ({
+            _id: music._id.toString(),
+            name: music.title,
+            description: music.description,
+            position: music.order || 0,
+            favorites: [],
+            audioFilename: music.audioFilename,
+            imageFilename: music.imageFilename,
+            categories: music.categories.map((cat) => cat.toString()),
+            isPremium: music.isPremium,
+            typeContent: "app",
+            slug: music.title ? music.title.toLowerCase().replace(/\s+/g, "-") : "",
+            createdAt: music.createdAt ? new Date(music.createdAt).toISOString() : "",
+            updatedAt: music.updatedAt ? new Date(music.updatedAt).toISOString() : "",
+            __v: 0,
+            plays: music.plays,
+            order: music.order,
+            active: music.active,
+        }));
+        const totalPages = Math.ceil(total / currentPageSize);
+        const hasAnyPremium = musicList.some((item) => item.isPremium);
+        return {
+            musicList,
+            isPremium: hasAnyPremium,
+            totalCount: total,
+            currentPage: currentPage,
+            totalPages,
+        };
     }
     async findOne(id) {
         const music = await this.musicModel.findById(id).exec();
